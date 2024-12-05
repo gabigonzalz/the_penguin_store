@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title Orders - Admin Panel
+  body
+    h1 Orders
+    table(border="1")
+      tr
+        th Customer
+        th Address
+        th Products
+        th Total
+        th Date
+      each order in orders
+        tr
+          td #{order.customer}
+          td #{order.address}
+          td #{order.products.join(", ")}
+          td $#{order.total}
+          td #{order.date.toLocaleString()}

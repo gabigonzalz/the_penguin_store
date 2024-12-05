@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    title Edit Product - Admin Panel
+  body
+    h1 Edit Product
+    form(action=`/products/edit/${product._id}?token=${token}` method="POST")
+      div
+        label(for="name") Name:
+        input(type="text" name="name" value=product.name required)
+      div
+        label(for="description") Description:
+        input(type="text" name="description" value=product.description required)
+      div
+        label(for="price") Price:
+        input(type="number" name="price" step="0.01" value=product.price required)
+      div
+        label(for="stock") Stock:
+        input(type="number" name="stock" value=product.stock required)
+      button(type="submit") Update Product
+      a(href=`/products?token=${token}`) Cancel

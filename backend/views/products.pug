@@ -1,0 +1,38 @@
+doctype html
+html
+  head
+    title Products - Admin Panel
+  body
+    h1 Product Management
+    table(border="1")
+      tr
+        th Name
+        th Description
+        th Price
+        th Stock
+        th Actions
+      each product in products
+        tr
+          td #{product.name}
+          td #{product.description}
+          td $#{product.price}
+          td #{product.stock}
+          td
+            a(href=`/products/edit/${product._id}?token=${token}`) Edit
+            | 
+            a(href=`/products/delete/${product._id}?token=${token}` onclick="return confirm('Are you sure you want to delete this product?')") Delete
+    h2 Add New Product
+    form(action="/products?token=" + token method="POST")
+      div
+        label(for="name") Name:
+        input(type="text" name="name" required)
+      div
+        label(for="description") Description:
+        input(type="text" name="description" required)
+      div
+        label(for="price") Price:
+        input(type="number" name="price" step="0.01" required)
+      div
+        label(for="stock") Stock:
+        input(type="number" name="stock" required)
+      button(type="submit") Add Product
