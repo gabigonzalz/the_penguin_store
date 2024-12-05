@@ -13,7 +13,7 @@ html
         th Date
       each order in orders
         tr
-          td #{order.customer}
+          td #{order.name}
           td #{order.address}
           td #{order.products.join(", ")}
           td $#{order.total}
